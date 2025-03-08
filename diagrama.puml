@@ -1,0 +1,141 @@
+@startuml diagrama space invaders
+
+class Juego {
+    - nivelActual
+    - puntuacionTotal
+}
+
+class Nivel {
+    - numero
+    - dificultad
+}
+
+class Nave {
+    - energia
+    - posicionX
+    - posicionY
+}
+
+class NaveExtra {
+    - energiaExtra
+    
+}
+
+class Arma {
+    - potencia
+    - velocidadDisparo
+    
+}
+
+class Rayo
+
+class Puntuacion
+
+class Piloto {
+    - nombre
+    - experiencia
+    
+}
+
+class Humano {
+    - edad
+    - genero
+}
+
+class Vida
+
+class Espacio {
+    - ancho
+    - alto
+    + Transitar():
+}
+
+class Barrera {
+    - resistencia
+    + proteger():
+}
+
+class Defensa {
+    - nivelProteccion
+    
+}
+
+class Marciano {
+    - energia
+    - posicionX
+    - posicionY
+   
+}
+
+class Invasor {
+    - tipo
+}
+
+class RayoMarciano {
+    - daño
+    - velocidad
+}
+
+class MarcianoPulpo
+
+class MarcianoMedusa
+
+class MarcianoCangrejo
+
+class ColorNaranja {
+   -color
+}
+
+class ColorAzul {
+   -color
+}
+
+class ColorRosa {
+   -color
+}
+
+
+
+Juego "1" *-- "*" Nivel
+Nivel "1" *-- "1" Nave
+Nave "1" *-- "*" Arma
+Arma "1" *-- "*" Rayo
+Rayo -|> Puntuacion
+
+Nave "1" *-- "*" Piloto
+Piloto -|> Humano
+Nave "1" *-- "3" NaveExtra
+NaveExtra -|> Vida
+Vida -|> Puntuacion
+
+Piloto "1" o-- "1" Espacio
+Piloto "1" o-- "3" Barrera
+
+Barrera -|> Defensa
+Espacio "1" *-- "3" Barrera
+Espacio "1" *-- "*" Invasor
+Invasor -|> Marciano
+
+Marciano "*" *-- "*" RayoMarciano
+Marciano "*" o-- "1" Espacio
+
+MarcianoPulpo -|> Marciano
+MarcianoPulpo "*" *-- "1" ColorNaranja
+
+MarcianoMedusa -|> Marciano
+MarcianoMedusa "*" *-- "1" ColorAzul
+
+MarcianoCangrejo -|> Marciano
+MarcianoCangrejo "*" *-- "1" ColorRosa
+
+Nave --|> Movible
+Nave --|> Disparable
+Nave --|> Colisionable
+
+Marciano --|> Movible
+Marciano --|> Disparable
+Marciano --|> Colisionable
+
+Barrera --|> Defensivo
+
+@enduml

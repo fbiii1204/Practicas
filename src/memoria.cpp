@@ -14,6 +14,9 @@ class Chorizo{
             otro = true;
 
         }    
+        void Ejecutar (){
+    cout<<"Ejecutando chorizo"<<endl;
+        }
 };
 
 int main(int argc, char const *argv[])
@@ -92,7 +95,7 @@ cout<<"C++ :"<<new Chorizo()<<endl;
 Chorizo* punteroChori = new Chorizo();
 
 //c
-Chorizo* punteroC  = (Chorizo*)malloc (sizeof(Chorizo));
+Chorizo* punteroC  = (Chorizo*)malloc (sizeof(Chorizo)); //malloc entrega dicreccion de memoria
 (*punteroC).Inicializar();
 free(punteroC);
 
@@ -100,5 +103,11 @@ free(punteroC);
 Chorizo* punteroCXX = new Chorizo();
 delete punteroCXX;
 
+
+//indireccion  vs opersdor ->
+//indireccion
+(*punteroCXX).Ejecutar();
+//operador ->
+punteroCXX->Ejecutar();
 return 0;
 }

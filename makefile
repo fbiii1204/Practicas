@@ -18,3 +18,10 @@ bin/archivos :src/archivos.cpp
 
 archivos : bin/archivos
 	./bin/archivos
+
+
+bin/binario :src/binario.cpp
+	g++ src/binario.cpp -o bin/binario
+
+binario : bin/binario
+	./bin/binario

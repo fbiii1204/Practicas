@@ -32,22 +32,23 @@ Persona p2 = {"Maria",25};
 
 //Cerrar el archivo de salida
     archivoSalida.close ();
-//--------------------------------------------------------------------------------------
+    
 
-//     ifstream archivoEntrada;
-//     string linea;
-//     //Abrir el archvo de entrada
-//     archivoEntrada.open("archivo_salida.bin");
-//     if(!archivoEntrada){
-//         cerr << "Error al abrir el archivo de entrada." << endl;
-//         return 1;
-//     }
-//     //leer el arciho de entrada
-//     while (getline(archivoEntrada, linea)){
-//         cout << linea << endl;
-//     }
+
+ifstream archivoEntrada;
+     Persona p;
+   //Abrir el archvo de entrada
+     archivoEntrada.open("archivo_salida.bin", ios::binary);
+     if(!archivoEntrada){
+      cerr << "Error al abrir el archivo de entrada." << endl;
+      return 1;
+     }
+//     leer el arciho de entrada
+     while (archivoEntrada.read((char*)(&p), sizeof(Persona))) {
+        cout << "Nombre:" << p.nombre <<", Edad: " << p.edad << endl;
+     }
 //     //cerrar el archivo de entrada
-//     archivoEntrada.close();
+     archivoEntrada.close();
     
  return 0;
 }

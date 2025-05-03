@@ -1,0 +1,18 @@
+@starlum pokedex
+enum TipoPokemon{
+    AGUA,
+    FUEGO,
+    PLANTA,
+    ELECTRICO
+}
+
+
+class Pokemon{
+    -nombre : Texto
+    -tipo : TipoPokemon[]
+    -nivel : Numero
+    +string GetNombre()
+}
+Pokemon "1" *-- "*" TipoPokemon
+
+@endulm
